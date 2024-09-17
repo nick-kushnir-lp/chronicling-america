@@ -1,0 +1,44 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Company {
+  id                        String  @id @default(uuid())
+  rank                      Int
+  company_name              String
+  ticker                    String?
+  sector                    String
+  industry                  String
+  profitable                Boolean
+  founder_is_ceo            Boolean
+  female_ceo                Boolean
+  growth_in_jobs            Float
+  change_in_rank            Float
+  gained_in_rank            Boolean
+  dropped_in_rank           Boolean
+  newcomer_to_the_fortune500 Boolean
+  global500                 Boolean
+  worlds_most_admired_companies Boolean
+  best_companies_to_work_for Boolean
+  number_of_employees       Int
+  market_cap_march28_m      Float
+  revenues_m                Float
+  revenue_percent_change    Float
+  profits_m                 Float
+  profits_percent_change    Float
+  assets_m                  Float
+  ceo                       String
+  country                   String
+  headquarters_city         String
+  headquarters_state        String
+  website                   String
+  company_type              String
+  footnote                  String?
+  market_cap_updated_m      Float
+  updated                   DateTime
+}
