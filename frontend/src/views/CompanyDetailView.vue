@@ -16,7 +16,7 @@ export default defineComponent({
   },
   setup() {
     const companyStore = useCompanyStore();
-    const route = useRoute();  // Access the route to get the company ID
+    const route = useRoute();
     onMounted(() => {
       companyStore.fetchCompanyById(route.params.id as string);
     });

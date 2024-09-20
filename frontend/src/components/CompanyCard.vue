@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>{{ company.name }}</h2>
+    <h2>{{ company.company_name }}</h2>
     <p>CEO: {{ company.ceo }}</p>
-    <p>Location: {{ company.location }}</p>
+    <p>Location: {{ company.country }}</p>
     <router-link :to="`/company/${company.id}`">View Details</router-link>
   </div>
 </template>

@@ -2,7 +2,7 @@ export interface ICompany {
     id: string;
     rank: number;
     company_name: string;
-    ticker?: string;
+    ticker: string | null;
     sector: string;
     industry: string;
     profitable: boolean;
@@ -29,7 +29,7 @@ export interface ICompany {
     headquarters_state: string;
     website: string;
     company_type: string;
-    footnote?: string;
+    footnote: string | null; // Change here to `string | null`
     market_cap_updated_m: number;
     updated: Date;
 }

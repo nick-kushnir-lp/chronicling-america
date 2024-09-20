@@ -7,12 +7,17 @@ export const getCompanyByIdService = async (id: string) => {
 };
 
 export const searchCompaniesService = async (query: string) => {
-    return prisma.company.findMany({
-        where: {
-            OR: [
-                { name: { contains: query, mode: 'insensitive' } },
-                { ticker: { contains: query, mode: 'insensitive' } },
-            ],
-        },
-    });
+    try {
+        return prisma.company.findMany({
+            where: {
+                OR: [
+                    { company_name: { contains: query, mode: 'insensitive' } },
+                    { ticker: { contains: query, mode: 'insensitive' } },
+                ],
+            },
+        });
+    } catch (error) {
+        console.error('Database query error:', error);  // Log the error details
+        throw new Error('Error retrieving companies');
+    }
 };

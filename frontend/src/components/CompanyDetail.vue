@@ -1,33 +1,29 @@
 <template>
   <div v-if="company">
-    <h1>{{ company.name }}</h1>
+    <h1>{{ company.company_name }}</h1>
     <p>CEO: {{ company.ceo }}</p>
-    <p>Location: {{ company.location }}</p>
-    <p>Revenue: {{ company.revenue }}</p>
-    <!-- Display other fields -->
+    <p>Location: {{ company.headquarters_city }}, {{ company.headquarters_state }}</p>
+    <p>Revenue: {{ company.revenues_m }}</p>
   </div>
   <div v-else>
     <p>Company details not available.</p>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted } from 'vue';
-import { useCompanyStore } from '../store/companyStore';
+<script setup lang="ts">
+import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { useCompanyStore } from '../store/companyStore';
 
-export default defineComponent({
-  setup() {
-    const companyStore = useCompanyStore();
-    const route = useRoute();
+const companyStore = useCompanyStore();
+const route = useRoute();
 
-    onMounted(() => {
-      companyStore.fetchCompanyById(route.params.id as string);
-    });
+const company = computed(() => companyStore.selectedCompany);
 
-    return {
-      company: companyStore.selectedCompany,
-    };
-  },
+onMounted(() => {
+  const companyId = route.params.id as string;
+  if (companyId) {
+    companyStore.fetchCompanyById(companyId);
+  }
 });
 </script>

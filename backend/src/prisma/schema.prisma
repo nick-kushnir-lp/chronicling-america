@@ -7,7 +7,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Company {
+model company {
   id                        String  @id @default(uuid())
   rank                      Int
   company_name              String

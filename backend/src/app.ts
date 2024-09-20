@@ -1,14 +1,19 @@
-import express, { Application } from 'express';
-import cors from 'cors';
+import express from 'express';
 import companyRoutes from './routes/companyRoutes';
 import searchRoutes from './routes/searchRoutes';
+import cors from 'cors';
 
-const app: Application = express();
 
-app.use(cors());
+const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:5173'  // Replace with your frontend URL
+}));
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/companies', companyRoutes);
 app.use('/api/search', searchRoutes);
 
-export default app;
+module.exports = app;
