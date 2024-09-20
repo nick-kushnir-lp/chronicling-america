@@ -1,7 +1,7 @@
 <template>
   <div>
     <SearchBar @search="onSearch" /> <!-- SearchBar component triggers the search -->
-    <div v-if="companies.length">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" v-if="companies.length">
       <CompanyCard v-for="company in companies" :key="company.id" :company="company" />
     </div>
     <div v-else>
@@ -21,6 +21,10 @@ const companyStore = useCompanyStore();
 const companies = computed(() => companyStore.companies);
 
 const onSearch = (query: string) => {
-  companyStore.fetchCompanies(query);
+  if (query.trim().length === 0) {
+    companies.value.length = 0;
+  } else {
+    companyStore.fetchCompanies(query);
+  }
 };
 </script>
