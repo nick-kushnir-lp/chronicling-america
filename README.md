@@ -9,7 +9,7 @@ SPA about american companies
     npm install
     ```
 
-2. **Set Up Environment Variables**: Create a `.env` file in the `backend` directory with the following content:
+2. **Set Up Environment Variables**: Create a `.env` file in the `backend` directory with the following content use `postgresql` database:
 
     ```env
     DATABASE_URL="postgresql://user:password@localhost:5432/yourdatabase"
