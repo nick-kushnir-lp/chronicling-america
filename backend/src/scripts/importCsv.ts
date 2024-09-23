@@ -3,10 +3,10 @@ import { parse } from 'fast-csv';
 import { Client } from 'pg';
 
 const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'postgres',
-    password: 'LivePerson2024!#!#!#!#',
+    user: 'dbuser',
+    host: 'dbhost',
+    database: 'dbname',
+    password: 'dbpassword',
     port: 5432,
 });
 

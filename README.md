@@ -21,19 +21,27 @@ SPA about american companies
     PORT=3000
     ```
 
-3. **Migrate Database Schema**: Run the Prisma migration to set up the database schema:
+
+3. **Generate Prisma Client**: This will generate the necessary Prisma client files.
+
+   ```bash
+    npx prisma generate
+    ```
+
+4. **Migrate Database Schema**: Run the Prisma migration to set up the database schema:
 
     ```bash
     npx prisma migrate dev --name init
     ```
 
-4. **Import CSV Data**: If you have the `fortune1000_2024.csv` file, run the following command to import the data into the database:
+5. **Import CSV Data**: If you have the `fortune1000_2024.csv` file, before running check if in `scripts/importCsv.ts` you've added your postgresDb credentials
+   run the following command to import the data into the database:
 
     ```bash
     npm run import-csv
     ```
 
-5. **Run the Server**: Start the development server:
+6. **Run the Server**: Start the development server:
 
     ```bash
     npm run dev
